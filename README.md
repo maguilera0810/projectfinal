@@ -1,8 +1,8 @@
-# Project 3
+# Final project
 
 Web Programming with Python and JavaScript
 
-Welcome to Project 3: Pizza
+Welcome to Final Project
 
 The structure of the following project goes as follows: 
 
