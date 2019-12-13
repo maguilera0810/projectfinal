@@ -1,0 +1,150 @@
+{% extends "orders/base.html" %} {% block title %} Carrito {% endblock %} {% block header %}
+<ul class="nav justify-content-end nav-pills">
+    <li class="nav-item">
+        <p class="nav-link">{{user.get_username}}</p>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}" id="">Logout</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'videos' %}" id="">Videos</a>
+    </li>
+</ul>
+{% endblock %} {% block body %} {% load staticfiles %}
+<style>
+    .my-custom-scrollbar {
+        position: relative;
+        height: 60vh;
+        overflow: auto;
+    }
+    
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+
+<div class="container">
+    <div align="center">
+        <h1>Commnets </h1>
+    </div>
+    <div class="row">
+        <div class="col-md">
+
+        </div>
+        <div class="col-md-10">
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-borderless">
+                    <thead>
+                    </thead>
+                    <tbody>
+
+                        {% for color,comentario in Comments %}
+                        <!-- {{data}}{{data.color}} -->
+                        <tr>
+                            <td>
+                                <div class="container">
+
+                                    <div class="row justify-content-center">
+                                        <div class="col-10">
+                                            <div class="card">
+                                                <div class="card-header" style="background-color:{{color}};">
+                                                    <div class="row">
+
+                                                        <div class="col-md-11">
+
+                                                            {{comentario.user_id}}
+                                                        </div>
+                                                        <div class="col-md-1">
+
+                                                            <span class="badge badge-success badge-pill">
+                                                                <h5>
+                                                                    {{comentario.rank}}
+                                                                </h5>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <blockquote class="blockquote mb-0">
+                                                        <p>{{comentario.comment}}</p>
+                                                        <!--  <footer class="blockquote-footer"> lol </footer> -->
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                    <tbody id="mensajes">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md">
+
+
+        </div>
+
+    </div>
+    <div class="row">
+        <br>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md">
+
+        </div>
+        <div class="col-md-8" style="background-color: brown;">
+            <form action="" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-1">
+                        <label for="rank">Rank</label>
+                        <select class="form-control" id="rank" name="rank">
+                                    <option value = 1>1</option>
+                                    <option value = 2>2</option>
+                                    <option value = 3>3</option>
+                                    <option value = 4>4</option>
+                                    <option value = 5>5</option>
+                                </select>
+                        <!-- <input type="number" class="form-control" id="rk" name="rank"> -->
+                    </div>
+                    <div class="form-group col-md-11">
+                        <label for="comment">Review</label>
+                        <textarea type="text" class="form-control" name="comment" id="comment" placeholder="Enter comment"></textarea>
+                    </div>
+                    {% csrf_token %}
+                    <button class="btn btn-primary" type="submit" id="boton">Add comment</button>
+                </div>
+            </form>
+            <!--             <div class="input-group mb-3">
+                <input id="msg" autocomplete="off" autofocus type="text" class="form-control" placeholder="Write your message here!" aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="boton">Add comment</button>
+                </div>
+            </div> -->
+        </div>
+        <div class="col-md">
+
+        </div>
+
+    </div>
+</div>
+<!--     {%for producto,producto2 in Cart%}
+    <li>{{producto.product}} - {{producto.tipe}} - {{producto.size}} - {{producto2.topings}} - {{producto.price}}</li>
+
+    {%endfor%} -->
+
+
+<!-- <button id="boton"> Order </button> -->
+
+
+{% endblock %}

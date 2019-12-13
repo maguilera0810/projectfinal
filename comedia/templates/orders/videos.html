@@ -1,0 +1,52 @@
+{% extends "orders/base.html" %} {% block title %} Videos {% endblock %} {% block header %}
+
+<ul class="nav justify-content-end nav-pills">
+    <li class="nav-item">
+        <p class="nav-link">{{user.get_username}}</p>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}" id="">Logout</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'comments' %}" id="">Comments</a>
+    </li>
+    <li class="nav-item dropdown">
+        <form action="" method="POST">
+            <ul class="nav justify-content-end nav-pills">
+                <li class="nav-item">
+
+                    <select class="form-control" id="pagina" name="pagina">
+                    {% for group in groups %}
+                    <option value = {{group}}>{{group}}</option>
+                    {% endfor %}
+                    
+                </select>
+                </li>
+                <li class="nav-item">
+
+                    {% csrf_token %}
+                    <button class="btn btn-primary" type="submit" id="boton">Change page</button>
+                </li>
+            </ul>
+        </form>
+    </li>
+</ul>
+{% endblock %} {% block body %} {% load staticfiles %}
+<!-- <script src={ % static "js/ejemplo.js" %} type="text/javascript"></script> -->
+
+
+
+
+<div class="d-flex flex-wrap" style="margin-left: 6%;margin-right: 6%;">
+    {% for video in videos %}
+    <div class="p-2">
+        <!-- {{video.name}} {{video.url}} {{video.tipo}} -->
+        <iframe width="500" height="315" src="{{video.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    </div>
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}
