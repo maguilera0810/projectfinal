@@ -1,4 +1,4 @@
-{% extends "orders/base.html" %} {% block title %} Register {% endblock %} {% block header %}
+{% extends "orders/layout.html" %} {% block title %} Register {% endblock %} {% block header %}
 <div>
     <ul class="nav justify-content-end nav-pills">
         <li class="nav-item">
@@ -7,19 +7,15 @@
     </ul>
 </div>
 {% endblock %} {% block body %}
-<!-- <div class="tbcontent">
 
-    <h1>Register </h1>
-    <form action="" method="POST">
-        {% csrf_token %} Name: <input type="text" name="name" />
-        <br> Lastname: <input type="text" name="lastname" />
-        <br> Username: <input type="text" name="username" />
-        <br> Email: <input type="email" name="email" /><br>
-        <br> Password: <input type="password" name="password" />
-        <input type="submit" value="Login" />
-    </form>
-</div> -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
 
+        document.querySelector("#registrar").onclick = () => {
+            alert("usuario registrado")
+        }
+    });
+</script>
 
 
 <div class="container">
@@ -54,7 +50,7 @@
                             <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                         </div>
                         {% csrf_token %}
-                        <input type="submit" class="btn btn-primary" value="Sign up" />
+                        <input type="submit" class="btn btn-primary" value="Sign up" id="registrar" />
 
                     </form>
 

@@ -114,25 +114,28 @@ def video(request):
 
 def AddComment(request):
 
-    if request.method == 'POST':
+    if (request.user.get_username()):
+        if request.method == 'POST':
 
-        username = request.user.get_username()
-        comment = request.POST["comment"]
-        rank = request.POST["rank"]
+            username = request.user.get_username()
+            comment = request.POST["comment"]
+            rank = request.POST["rank"]
 
-        c = models.Comment(
-            user_id=username,
-            rank=rank,
-            comment=comment
-        )
-        c.save()
+            c = models.Comment(
+                user_id=username,
+                rank=rank,
+                comment=comment
+            )
+            c.save()
 
-    comments = models.Comment.objects.all()
-    colors = []
-    for i in comments:
-        colors.append(ColorRandom())
-    context = {
-        "Comments": zip(colors, comments)
-    }
+        comments = models.Comment.objects.all()
+        colors = []
+        for i in comments:
+            colors.append(ColorRandom())
+        context = {
+            "Comments": zip(colors, comments)
+        }
 
-    return render(request, "orders/comment.html", context)
+        return render(request, "orders/comment.html", context)
+    else:
+        return redirect("/login/")

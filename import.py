@@ -1,5 +1,5 @@
 import csv
-from comedia.models import Video
+from comedia.models import Video,Comment,Client
 
 
 
@@ -16,5 +16,3 @@ for line in f:
 f.close()
 
 
-if __name__ == '__main__':
-    insertar()

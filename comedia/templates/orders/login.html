@@ -1,4 +1,4 @@
-{% extends "orders/base.html" %} {% block title %} Login {% endblock %} {% block header %}
+{% extends "orders/layout.html" %} {% block title %} Login {% endblock %} {% block header %}
 <div>
     <ul class="nav justify-content-end nav-pills">
 
@@ -9,15 +9,15 @@
 </div>
 {% endblock %} {% block body %}
 
-
-
-<script type="text/javascript">
-    if (message == false) {
-        console.log("/////falso")
-    } else {
-        console.log("/////smn")
-    }
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#form').onsubmit = function() {
+            const name = document.querySelector('#username').value;
+            alert(`Hello ${name}!`);
+        };
+    });
 </script>
+
 
 
 <div class="container">
@@ -28,7 +28,7 @@
                     <h4 class="display-4">Sign in</h1>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST" class="opaco">
+                    <form action="" method="POST" class="opaco" id=form>
                         {% csrf_token %}
                         <div class="form-row">
                             <div class="form-group col-md-12">

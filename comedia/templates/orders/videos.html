@@ -1,11 +1,11 @@
-{% extends "orders/base.html" %} {% block title %} Videos {% endblock %} {% block header %}
+{% extends "orders/layout.html" %} {% block title %} Videos {% endblock %} {% block header %}
 
 <ul class="nav justify-content-end nav-pills">
     <li class="nav-item">
         <p class="nav-link">{{user.get_username}}</p>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout' %}" id="">Logout</a>
+        <a class="nav-link" href="{% url 'logout' %}" id="salir">Logout</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{% url 'comments' %}" id="">Comments</a>
