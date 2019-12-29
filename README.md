@@ -4,11 +4,11 @@ Web Programming with Python and JavaScript
 
 Welcome to Final Project
 
-I create a website which has several kind of videos.
+I create a website which has comedy videos.
 
 Requirements:
 
-    -Python: The server and all the logic is made on Django
+    -Python: The server and all the logic are made on Django
 
     -SQL: There is a database with three tables
 
